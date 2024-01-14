@@ -35,3 +35,13 @@
     <h2>Active Menu</h2>
     <?php
  }
+
+ // Plugin activation url link
+ function activate_link_function($plugin){
+    if(plugin_basename( __FILE__ )==$plugin){
+        wp_redirect( admin_url( "admin.php?page=action_url" ) );
+        die();
+    }
+ }
+
+ add_action("activated_plugin", "activate_link_function");
